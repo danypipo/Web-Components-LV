@@ -1,22 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 import Counter from '../components/Counter.vue';
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/starwind/tooltip";
+import { Button } from "@/components/starwind/button";
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxLabel,
+} from "@/components/starwind/combobox";
+import { Dropzone, DropzoneFilesList, DropzoneLoadingIndicator, DropzoneUploadIndicator } from "@/components/starwind/dropzone";
+import { Separator } from "@/components/starwind/separator";
 ---
 
-<html lang="en">
-  <body>
-    <h1>My Astro & Vue Site Lu Arvizu</h1>
-    
-    <!-- IMPORTANT: Add a client directive for interactivity -->
-    <Counter client:load />
-  </body>
-</html>
 
 <Layout title="LeadVenture">
-	<main class="flex min-h-screen flex-col items-center justify-center gap-6">
-		<h1 class="text-3xl font-bold">Lu Arvizu</h1>
-	</main>
+  <main>
+
+    <div style="text-align: center;">
+      <h1 class="font-bold" style="color:blueviolet; font-size: 30px; text-align:center">My Astro & Vue Site Lu Arvizu</h1>
+      <!-- IMPORTANT: Add a client directive for interactivity -->
+        <Counter client:load />
+    </div>
+
+  <Separator />
+
+  <div class="flex h-5 items-center space-x-4 text-sm" style="padding-top: 100px; padding-bottom: 100px; padding-left: 40px;">
+    <div>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button variant="outline">Hover me</Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            Add to library
+          </TooltipContent>
+        </Tooltip>
+    </div>
+    <Separator orientation="vertical" />
+    <div>
+        <Combobox name="framework" required>
+        <ComboboxLabel>Favorite Type Music?</ComboboxLabel>
+        <ComboboxInput placeholder="Search options" />
+        <ComboboxContent>
+          <ComboboxEmpty>No framework found.</ComboboxEmpty>
+          <ComboboxItem value="astro">Rock</ComboboxItem>
+          <ComboboxItem value="react">Pop</ComboboxItem>
+          <ComboboxItem value="vue">Hip Hop</ComboboxItem>
+          <ComboboxItem value="svelte">Classic</ComboboxItem>
+        </ComboboxContent>
+      </Combobox>
+    </div>
+  </div>
+
+
+  <Separator />
+    
+  <div class="w-full max-w-[400px]" style="margin-top: 50px; padding-left: 40px;">
+    <Dropzone />
+  </div>
+
+    
+
+
+    
+
+  </main>
 </Layout>
+
+
+
 
 
